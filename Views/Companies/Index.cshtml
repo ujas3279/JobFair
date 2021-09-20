@@ -1,0 +1,78 @@
+﻿@model IEnumerable<JobFair.Models.Company>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HiringDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Criteria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vacancies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Package)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplyLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Register)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HiringDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Criteria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vacancies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Package)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplyLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Register.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Cid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Cid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Cid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
