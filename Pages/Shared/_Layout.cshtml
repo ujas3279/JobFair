@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,9 +22,39 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                        @if (Context.Session.GetString("Role") == "2")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Registers" asp-action="Index">Manage Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Companies" asp-action="Index">Manage Companies</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Seekers" asp-action="Index">Manage Seeker Profile</a>
+                            </li>
+                        }
+                        @if (Context.Session.GetString("Role") == "1")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Companies" asp-action="Index">Available Jobs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="" asp-action="">My Jobs</a>
+                            </li>
+
+                        }
+                        @if (Context.Session.GetString("Role") == "0")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Companies" asp-action="Dashboard">Interested Candidates</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="" asp-action="">Selected Candidates</a>
+                            </li>
+
+                        }
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

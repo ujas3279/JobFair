@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JobFair.Data;
 using JobFair.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace JobFair.Controllers
 {
@@ -59,11 +60,14 @@ namespace JobFair.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Sid,SeekerName,HighestQualification,Percentage,Skills,Status,Rid")] Seeker seeker)
         {
+            
             if (ModelState.IsValid)
             {
                 _context.Add(seeker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (HttpContext.Session.GetString("Role") == "2")
+                    return RedirectToAction(nameof(Index));
+                return RedirectToAction("Dashboard");
             }
             ViewData["Rid"] = new SelectList(_context.Registers, "Rid", "Email", seeker.Rid);
             return View(seeker);
@@ -150,6 +154,10 @@ namespace JobFair.Controllers
             _context.Seekers.Remove(seeker);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult dashboard()
+        {
+            return View();
         }
 
         private bool SeekerExists(int id)

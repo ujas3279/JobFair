@@ -1,26 +1,27 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark"   asp-controller="Registers" asp-action="Create">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
+    @if(Context.Session.GetString("Email")!=null)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Registers" asp-action="Details" asp-route-id="@Context.Session.GetString("Rid")"  title="Manage">Hello @Context.Session.GetString("Name")</a>
+        </li>
+        <li class="nav-item">
+            
+            <a class="nav-link text-dark" asp-controller="Registers" asp-action="Logout">Logout</a>
+            
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Registers" asp-action="Create">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Registers" asp-action="Login">Login</a>
+        </li>
+    }
 </ul>

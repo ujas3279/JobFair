@@ -1,0 +1,10 @@
+﻿@model JobFair.Models.Seeker
+
+@{
+    ViewData["Title"] = "Seeker";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome @ViewContext.HttpContext.Request.Cookies["Name"]</h1>
+    
+</div>

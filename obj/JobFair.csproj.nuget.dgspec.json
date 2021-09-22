@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DotNet\\JobFair\\JobFair\\JobFair.csproj": {}
+    "F:\\.net Project\\New folder\\JobFair.csproj": {}
   },
   "projects": {
-    "D:\\DotNet\\JobFair\\JobFair\\JobFair.csproj": {
+    "F:\\.net Project\\New folder\\JobFair.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DotNet\\JobFair\\JobFair\\JobFair.csproj",
+        "projectUniqueName": "F:\\.net Project\\New folder\\JobFair.csproj",
         "projectName": "JobFair",
-        "projectPath": "D:\\DotNet\\JobFair\\JobFair\\JobFair.csproj",
-        "packagesPath": "C:\\Users\\Ashish Singh\\.nuget\\packages\\",
-        "outputPath": "D:\\DotNet\\JobFair\\JobFair\\obj\\",
+        "projectPath": "F:\\.net Project\\New folder\\JobFair.csproj",
+        "packagesPath": "C:\\Users\\Pat\\.nuget\\packages\\",
+        "outputPath": "F:\\.net Project\\New folder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ashish Singh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Pat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

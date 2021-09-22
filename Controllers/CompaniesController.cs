@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JobFair.Data;
 using JobFair.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace JobFair.Controllers
 {
@@ -51,6 +52,10 @@ namespace JobFair.Controllers
             ViewData["Rid"] = new SelectList(_context.Registers, "Rid", "Email");
             return View();
         }
+        public IActionResult dashboard()
+        {
+            return View();
+        }
 
         // POST: Companies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -59,11 +64,14 @@ namespace JobFair.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Cid,CompanyName,HiringDate,Description,Criteria,Vacancies,Package,ApplyLink,Rid")] Company company)
         {
+            
             if (ModelState.IsValid)
             {
                 _context.Add(company);
                 await _context.SaveChangesAsync();
+                if(HttpContext.Session.GetString("Role")=="2")
                 return RedirectToAction(nameof(Index));
+                return RedirectToAction("Dashboard");
             }
             ViewData["Rid"] = new SelectList(_context.Registers, "Rid", "Email", company.Rid);
             return View(company);

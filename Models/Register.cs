@@ -20,6 +20,7 @@ namespace JobFair.Models
         public string Name { get; set; }
         [Display(Name = "Email")]
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Display(Name = "Password")]
