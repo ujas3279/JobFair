@@ -158,6 +158,7 @@ namespace JobFair.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
         private bool InterestedCandidateExists(int id)
         {
             return _context.InterestedCandidates.Any(e => e.Icid == id);
